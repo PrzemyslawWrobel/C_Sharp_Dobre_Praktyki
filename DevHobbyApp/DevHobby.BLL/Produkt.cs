@@ -36,7 +36,7 @@ namespace DevHobby.BLL
 
         public string PowiedzWitaj()
         {
-            return "Witaj " + NazwaProduktu + "(" + ProduktId + ")" + Opis;
+            return "Witaj " + NazwaProduktu + " (" + ProduktId + "): " + Opis;
         }
     }
 }
