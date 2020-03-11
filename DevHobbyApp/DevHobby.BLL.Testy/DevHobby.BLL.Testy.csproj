@@ -49,11 +49,21 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="DostawcaTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DevHobby.BLL\DevHobby.BLL.csproj">
+      <Project>{85e4dd3c-a29a-4d27-b028-27fc3ca2c536}</Project>
+      <Name>DevHobby.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DevHobby.Common\DevHobby.Common.csproj">
+      <Project>{b2955a00-d8c0-4edc-b26c-38e60788bb39}</Project>
+      <Name>DevHobby.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
