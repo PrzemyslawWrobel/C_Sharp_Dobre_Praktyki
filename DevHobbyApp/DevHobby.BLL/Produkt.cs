@@ -12,6 +12,18 @@ namespace DevHobby.BLL
     /// </summary>
     public class Produkt
     {
+        // konstruktor domyślny
+        public Produkt()
+        {
+            Console.WriteLine("Produkt utworzony");
+        }
+
+        public Produkt(int produktId, string nazwaProduktu, string opis) : this()
+        {
+            ProduktId = produktId;
+            NazwaProduktu = nazwaProduktu;
+            Opis = opis;
+        }
         #region właściwości klasy
         private int produktId;
         public int ProduktId
