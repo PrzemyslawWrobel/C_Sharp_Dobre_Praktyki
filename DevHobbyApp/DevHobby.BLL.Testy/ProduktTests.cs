@@ -23,6 +23,25 @@ namespace DevHobby.BLL.Tests
             // Assert
             Assert.AreEqual(oczekiwana, aktualna);
         }
+
+        [TestMethod()]
+        public void PowiedzWitajKonstruktorParametryzowanyTest()
+        {
+            // Arange
+
+            var produkt = new Produkt(1, "Biurko", "Czerwone biurko");
+            //produkt.NazwaProduktu = "Biurko";
+            //produkt.ProduktId = 1;
+            //produkt.Opis = "Czerwone biurko";
+
+
+            var oczekiwana = "Witaj Biurko (1): Czerwone biurko";
+            //ACT wykonaj test
+            var aktualna = produkt.PowiedzWitaj();
+
+            // Assert
+            Assert.AreEqual(oczekiwana, aktualna);
+        }
     }
 }  
 

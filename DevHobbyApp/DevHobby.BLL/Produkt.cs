@@ -20,9 +20,11 @@ namespace DevHobby.BLL
 
         public Produkt(int produktId, string nazwaProduktu, string opis) : this()
         {
-            ProduktId = produktId;
-            NazwaProduktu = nazwaProduktu;
-            Opis = opis;
+            this.ProduktId = produktId;
+            this.NazwaProduktu = nazwaProduktu;
+            this.Opis = opis;
+
+            Console.WriteLine("Produkt ma nazwę: " + nazwaProduktu);
         }
         #region właściwości klasy
         private int produktId;

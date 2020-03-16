@@ -20,8 +20,8 @@ namespace DevHobby.Common
             // kod, aby wysłać wiadomość email 
 
             var potwierdzenie = "Wiadomość wysłana: " + temat;
-            var logowanieService = new LogowanieService();
-            logowanieService.Logowanie(potwierdzenie);
+           // var logowanieService = new LogowanieService();
+            LogowanieService.Logowanie(potwierdzenie);
 
             return potwierdzenie;
         }
