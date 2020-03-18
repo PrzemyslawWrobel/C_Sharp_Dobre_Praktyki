@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevHobby.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -49,7 +50,16 @@ namespace DevHobby.BLL
         #endregion
 
         public string PowiedzWitaj()
+
         {
+            var dostawca = new Dostawca();
+            dostawca.wyslijEmailWitamy("wiadomość z produktu");
+
+            var emailServices = new EmailService();
+            var potwierdzenie = emailServices.WyslijWiadomosc("Nowy Produkt", this.nazwaProduktu, "marcin@dev-DevHobby.pl");
+
+            var wynik = LogowanieService.Logowanie("Powiedziano Witaj");
+
             return "Witaj " + NazwaProduktu + " (" + ProduktId + "): " + Opis;
         }
     }
