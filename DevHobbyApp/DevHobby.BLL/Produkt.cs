@@ -13,10 +13,17 @@ namespace DevHobby.BLL
     /// </summary>
     public class Produkt
     {
+
+        //Stałę deklaruje się nad konstruktorami
+
+        public const double caliNametr = 38.87;
+        public readonly decimal MinimalnaCena;
         // konstruktor domyślny
         public Produkt()
         {
             Console.WriteLine("Produkt utworzony");
+            //this.DostawcaProduktu = new Dostawca();
+            this.MinimalnaCena = 10.50m;
         }
 
         public Produkt(int produktId, string nazwaProduktu, string opis) : this()
@@ -24,9 +31,15 @@ namespace DevHobby.BLL
             this.ProduktId = produktId;
             this.NazwaProduktu = nazwaProduktu;
             this.Opis = opis;
+            if (nazwaProduktu.StartsWith("Krzesło"))
+            {
+                this.MinimalnaCena = 50.66m;
+            }
 
             Console.WriteLine("Produkt ma nazwę: " + nazwaProduktu);
         }
+
+
         #region właściwości klasy
         private int produktId;
         public int ProduktId
@@ -47,20 +60,45 @@ namespace DevHobby.BLL
             get { return opis; }
             set { opis = value; }
         }
+
+        private Dostawca dostawcaProduktu;
+
+        public Dostawca DostawcaProduktu
+        {
+            get
+            {
+                if (dostawcaProduktu == null)
+                {
+                    dostawcaProduktu = new Dostawca();
+                }
+                return dostawcaProduktu;
+            }
+            set { dostawcaProduktu = value; }
+        }
+
+        private DateTime? dataDostepnosci;
+
+        public DateTime? DataDostepnosci
+        {
+            get { return dataDostepnosci; }
+            set { dataDostepnosci = value; }
+        }
+
+
         #endregion
 
         public string PowiedzWitaj()
 
         {
-            var dostawca = new Dostawca();
-            dostawca.wyslijEmailWitamy("wiadomość z produktu");
+            //var dostawca = new Dostawca();
+            //dostawca.wyslijEmailWitamy("wiadomość z produktu");
 
             var emailServices = new EmailService();
             var potwierdzenie = emailServices.WyslijWiadomosc("Nowy Produkt", this.nazwaProduktu, "marcin@dev-DevHobby.pl");
 
             var wynik = LogowanieService.Logowanie("Powiedziano Witaj");
 
-            return "Witaj " + NazwaProduktu + " (" + ProduktId + "): " + Opis;
+            return "Witaj " + NazwaProduktu + " (" + ProduktId + "): " + Opis + " Dostępny od: " + dataDostepnosci?.ToShortDateString();
         }
     }
 }
