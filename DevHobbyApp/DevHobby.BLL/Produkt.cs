@@ -50,7 +50,11 @@ namespace DevHobby.BLL
         private string nazwaProduktu;
         public string NazwaProduktu
         {
-            get { return nazwaProduktu; }
+            get
+            {
+                var sformatowanaNazwaProduktu = nazwaProduktu.Trim();
+                return sformatowanaNazwaProduktu;
+            }
             set { nazwaProduktu = value; }
         }
         private string opis;
