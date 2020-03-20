@@ -24,6 +24,7 @@ namespace DevHobby.BLL
             Console.WriteLine("Produkt utworzony");
             //this.DostawcaProduktu = new Dostawca();
             this.MinimalnaCena = 10.50m;
+            this.Kategoria = "Informatyka";
         }
 
         public Produkt(int produktId, string nazwaProduktu, string opis) : this()
@@ -52,10 +53,23 @@ namespace DevHobby.BLL
         {
             get
             {
-                var sformatowanaNazwaProduktu = nazwaProduktu.Trim();
+                var sformatowanaNazwaProduktu = nazwaProduktu?.Trim();
                 return sformatowanaNazwaProduktu;
             }
-            set { nazwaProduktu = value; }
+            set
+            {
+                if (value.Length < 4)
+                {
+                    Wiadomowsc = "Zbyt krótka nazwa produktu";
+                }
+                else if (value.Length > 30)
+                {
+                    Wiadomowsc = "Za długa nazwa, musi mieć mniej niż 30 znaków";
+                } else
+                {
+                    nazwaProduktu = value;
+                }
+            }
         }
         private string opis;
 
@@ -88,6 +102,9 @@ namespace DevHobby.BLL
             set { dataDostepnosci = value; }
         }
 
+        public string Wiadomowsc { get; private set; }
+        public int Numer { get; set; } = 1;
+        public string Kategoria {  get;  set; }
 
         #endregion
 

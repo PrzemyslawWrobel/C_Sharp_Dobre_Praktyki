@@ -147,8 +147,140 @@ namespace DevHobby.BLL.Tests
             // Assert
             Assert.AreEqual(oczekiwana, aktualna);
         }
-    }
 
+        [TestMethod()]
+        public void NazwaProduktu_ZaKrotkaTest()
+        {
+            // Arange
+
+            var produkt = new Produkt();
+            produkt.NazwaProduktu = "Krz";
+            string oczekiwana = null;
+            string oczekiwanaWiadomość = "Zbyt krótka nazwa produktu";
+            //ACT wykonaj test
+            var aktualna = produkt.NazwaProduktu;
+            var aktualnaWiadomość = produkt.Wiadomowsc;
+
+            // Assert
+            Assert.AreEqual(oczekiwana, aktualna);
+            Assert.AreEqual(oczekiwanaWiadomość, aktualnaWiadomość);
+        }
+
+        [TestMethod()]
+        public void NazwaProduktu_ZaDlugaTest()
+        {
+            // Arange
+
+            var produkt = new Produkt();
+            produkt.NazwaProduktu= "  Krzesło Obrotowe zbyt długaa nazwa produktu  ";
+            string oczekiwana = null;
+            string oczekiwanaWiadomość = "Za długa nazwa, musi mieć mniej niż 30 znaków";
+            //ACT wykonaj test
+            var aktualna = produkt.NazwaProduktu;
+            var aktualnaWiadomość = produkt.Wiadomowsc;
+
+            // Assert
+            Assert.AreEqual(oczekiwana, aktualna);
+            Assert.AreEqual(oczekiwanaWiadomość, aktualnaWiadomość);
+        }
+
+        [TestMethod()]
+        public void NazwaProduktu_PrawidłowaTest()
+        {
+            // Arange
+
+            var produkt = new Produkt();
+            produkt.NazwaProduktu = "Krzesło Obrotowe";
+            string oczekiwana = "Krzesło Obrotowe";
+            string oczekiwanaWiadomość =null;
+            //ACT wykonaj test
+            var aktualna = produkt.NazwaProduktu;
+            var aktualnaWiadomość = produkt.Wiadomowsc;
+
+            // Assert
+            Assert.AreEqual(oczekiwana, aktualna);
+            Assert.AreEqual(oczekiwanaWiadomość, aktualnaWiadomość);
+
+        }
+        [TestMethod()]
+        public void Kategori_WarośćDomyślnaTest()
+        {
+            // Arange
+
+            var produkt = new Produkt();
+           // produkt.NazwaProduktu = "Krzesło Obrotowe";
+            string oczekiwana = "Informatyka";
+           // string oczekiwanaWiadomość = null
+
+            //ACT wykonaj test
+            var aktualna = produkt.Kategoria;
+//var aktualnaWiadomość = produkt.Wiadomowsc;
+
+            // Assert
+            Assert.AreEqual(oczekiwana, aktualna);
+            //Assert.AreEqual(oczekiwanaWiadomość, aktualnaWiadomość);
+
+        }
+
+        [TestMethod()]
+        public void Kategori_NowaWartośćTest()
+        {
+            // Arange
+
+            var produkt = new Produkt();
+            produkt.Kategoria = "Geografia";
+            string oczekiwana = "Geografia";
+            // string oczekiwanaWiadomość = null
+
+            //ACT wykonaj test
+            var aktualna = produkt.Kategoria;
+            //var aktualnaWiadomość = produkt.Wiadomowsc;
+
+            // Assert
+            Assert.AreEqual(oczekiwana, aktualna);
+            //Assert.AreEqual(oczekiwanaWiadomość, aktualnaWiadomość);
+
+        }
+        [TestMethod()]
+        public void Numer_WarośćDomyślnaTest()
+        {
+            // Arange
+
+            var produkt = new Produkt();
+           
+            var oczekiwana = 1;
+            // string oczekiwanaWiadomość = null
+
+            //ACT wykonaj test
+            var aktualna = produkt.Numer;
+            //var aktualnaWiadomość = produkt.Wiadomowsc;
+
+            // Assert
+            Assert.AreEqual(oczekiwana, aktualna);
+            //Assert.AreEqual(oczekiwanaWiadomość, aktualnaWiadomość);
+
+        }
+
+        [TestMethod()]
+        public void Numer_NowaWartośćTest()
+        {
+            // Arange
+
+            var produkt = new Produkt();
+            produkt.Numer = 2;
+            var oczekiwana = 2;
+            // string oczekiwanaWiadomość = null
+
+            //ACT wykonaj test
+            var aktualna = produkt.Numer;
+            //var aktualnaWiadomość = produkt.Wiadomowsc;
+
+            // Assert
+            Assert.AreEqual(oczekiwana, aktualna);
+            //Assert.AreEqual(oczekiwanaWiadomość, aktualnaWiadomość);
+
+        }
+    }
 }
 // Arange
 //ACT wykonaj test
