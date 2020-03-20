@@ -104,7 +104,9 @@ namespace DevHobby.BLL
 
         public string Wiadomowsc { get; private set; }
         public int Numer { get; set; } = 1;
-        public string Kategoria {  get;  set; }
+        internal string Kategoria {  get;  set; }
+
+        public string KodProduktu => Kategoria + " - " + Numer;
 
         #endregion
 
