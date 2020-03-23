@@ -26,6 +26,31 @@ namespace DevHobby.BLL
 
             return potwierdzenie;
         }
+        /// <summary>
+        /// Metoda wysyła zamowienie do dostawcy
+        /// </summary>
+        /// <param name="produkt">Produkt do zamowienia</param>
+        /// <param name="ilosc">Ilość produktu do zamowienia</param>
+        /// <returns></returns>
+        public WynikOperacji ZlozZamowienie(Produkt produkt, int ilosc)
+        {
+            if (produkt == null)
+                throw new ArgumentNullException(nameof(produkt));
+            if (ilosc <= 0)
+                throw new ArgumentOutOfRangeException(nameof(ilosc));
+
+            var sukces = false;
+            var tekstZamowienia = " zamowienie z dev-hobby.pl" + Environment.NewLine +
+                "Produkt " + produkt.KodProduktu + Environment.NewLine +
+                "Ilość" + ilosc;
+            var emailService = new EmailService();
+            var potwierdzenie  = emailService.WyslijWiadomosc("Nowe Zamowienie", tekstZamowienia, this.Email);
+
+            if (potwierdzenie.StartsWith("Wiadomość wysłana: "))
+                sukces = true;
+            var wynikiOperacji = new WynikOperacji(sukces, tekstZamowienia);
+            return wynikiOperacji;
+        }
 
     }
 }
