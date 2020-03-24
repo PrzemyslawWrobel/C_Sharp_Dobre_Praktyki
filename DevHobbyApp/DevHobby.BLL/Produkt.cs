@@ -123,5 +123,10 @@ namespace DevHobby.BLL
 
             return "Witaj " + NazwaProduktu + " (" + ProduktId + "): " + Opis + " Dostępny od: " + dataDostepnosci?.ToShortDateString();
         }
+
+        public override string ToString()
+        {
+            return nazwaProduktu + "(" + this.ProduktId + ")";
+        }
     }
 }
