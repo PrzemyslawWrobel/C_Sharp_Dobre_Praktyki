@@ -108,6 +108,8 @@ namespace DevHobby.BLL
 
         public string KodProduktu => Kategoria + " - " + Numer;
 
+        public decimal Koszt { get; set; }
+
         #endregion
 
         public string PowiedzWitaj()
@@ -128,5 +130,13 @@ namespace DevHobby.BLL
         {
             return nazwaProduktu + "(" + this.ProduktId + ")";
         }
+
+        /// <summary>
+        /// Oblicza sugerowaną cenę produktu
+        /// </summary>
+        /// <param name="procent"></param>
+        /// <returns></returns>
+        public  decimal ObliczSugerowanaCena(decimal procent) => Koszt + (this.Koszt * procent / 100);
+        
     }
 }

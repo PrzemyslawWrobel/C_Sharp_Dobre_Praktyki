@@ -319,6 +319,19 @@ namespace DevHobby.BLL.Tests
             //Assert.AreEqual(oczekiwanaWiadomość, aktualnaWiadomość);
 
         }
+        [TestMethod()]
+        public void ObliczSugerowanaCena_Test()
+        {
+            // Arange
+            var produkt = new Produkt(1, "Biurko", "opis");
+            produkt.Koszt = 200m;
+            var oczekiwana = 220m;
+            //ACT wykonaj test
+            var aktualna = produkt.ObliczSugerowanaCena(10);
+
+            // Assert
+            Assert.AreEqual(oczekiwana, aktualna);
+        }
     }
 }
 // Arange
