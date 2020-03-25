@@ -138,5 +138,22 @@ namespace DevHobby.BLL.Testy
             Assert.AreEqual(oczekiwana.Sukces, actualna.Sukces);
             Assert.AreEqual(oczekiwana.Wiadomosc, actualna.Wiadomosc);
         }
+
+        [TestMethod]
+        public void ZlozZamowienie_DolaczAdre_test()
+        {
+            // Arange
+            var dostawca = new Dostawca();
+            var produkt = new Produkt(1, "Biurko", "Opis");
+            var oczekiwana = new WynikOperacji(true, "Tekst zamowienia Adres zamowienia");
+            //ACT wykonaj test
+            var actualna = dostawca.ZlozZamowienie(produkt, 15, true, false);
+
+            // Assert
+
+            Assert.AreEqual(oczekiwana.Sukces, actualna.Sukces);
+            Assert.AreEqual(oczekiwana.Wiadomosc, actualna.Wiadomosc);
+
+        }
     }
 }
