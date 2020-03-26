@@ -9,6 +9,8 @@ namespace DevHobby.BLL
 {
     public class Dostawca
     {
+        public enum DolaczAdres { Tak, Nie}
+        public enum WyslijKopie { Tak, Nie}
         public int DostawcaId { get; set; }
         public string NazwaFirmy { get; set; }
         public string Email { get; set; }
@@ -32,29 +34,31 @@ namespace DevHobby.BLL
         /// <param name="produkt">Produkt do zamowienia</param>
         /// <param name="ilosc">Ilość produktu do zamowienia</param>
         /// <returns></returns>
-        public WynikOperacji ZlozZamowienie(Produkt produkt, int ilosc)
-        {
-            // wywołujemy metodę z największa iloscia parametrów i te których nie potrzebujemy dajemy null
-            return ZlozZamowienie(produkt, ilosc, null, null);
+        /// 
+        // Metoda juz nie potrzebna ponieważ jest metoda z opcjonalnymi parametrami 
+        //public WynikOperacji ZlozZamowienie(Produkt produkt, int ilosc)
+        //{
+        //    // wywołujemy metodę z największa iloscia parametrów i te których nie potrzebujemy dajemy null
+        //    return ZlozZamowienie(produkt, ilosc, null, null);
 
 
-            //if (produkt == null)
-            //    throw new ArgumentNullException(nameof(produkt));
-            //if (ilosc <= 0)
-            //    throw new ArgumentOutOfRangeException(nameof(ilosc));
+        //    //if (produkt == null)
+        //    //    throw new ArgumentNullException(nameof(produkt));
+        //    //if (ilosc <= 0)
+        //    //    throw new ArgumentOutOfRangeException(nameof(ilosc));
 
-            //var sukces = false;
-            //var tekstZamowienia = "Zamowienie z dev-hobby.pl" + Environment.NewLine +
-            //    "Produkt: " + produkt.KodProduktu + Environment.NewLine +
-            //    "Ilość: " + ilosc;
-            //var emailService = new EmailService();
-            //var potwierdzenie  = emailService.WyslijWiadomosc("Nowe Zamowienie", tekstZamowienia, this.Email);
+        //    //var sukces = false;
+        //    //var tekstZamowienia = "Zamowienie z dev-hobby.pl" + Environment.NewLine +
+        //    //    "Produkt: " + produkt.KodProduktu + Environment.NewLine +
+        //    //    "Ilość: " + ilosc;
+        //    //var emailService = new EmailService();
+        //    //var potwierdzenie  = emailService.WyslijWiadomosc("Nowe Zamowienie", tekstZamowienia, this.Email);
 
-            //if (potwierdzenie.StartsWith("Wiadomość wysłana: "))
-            //    sukces = true;
-            //var wynikiOperacji = new WynikOperacji(sukces, tekstZamowienia);
-            //return wynikiOperacji;
-        }
+        //    //if (potwierdzenie.StartsWith("Wiadomość wysłana: "))
+        //    //    sukces = true;
+        //    //var wynikiOperacji = new WynikOperacji(sukces, tekstZamowienia);
+        //    //return wynikiOperacji;
+        //}
         /// <summary>
         /// Metoda wysyła zamowienie do dostawcy
         /// </summary>
@@ -62,37 +66,40 @@ namespace DevHobby.BLL
         /// <param name="ilosc">Ilość produktu do zamowienia</param>
         /// <param name="data">Data dostawy zamówienia</param>
         /// <returns></returns>
-        public WynikOperacji ZlozZamowienie(Produkt produkt, int ilosc, DateTimeOffset? data)
-        {
-            //podobnie jak wyżej
+        /// 
+        // Metoda juz nie potrzebna ponieważ jest metoda z opcjonalnymi parametrami 
 
-            return ZlozZamowienie(produkt, ilosc, data, null);
-            
-            //if (produkt == null)
-            //    throw new ArgumentNullException(nameof(produkt));
-            //if (ilosc <= 0)
-            //    throw new ArgumentOutOfRangeException(nameof(ilosc));
-            //if (data <= DateTimeOffset.Now)
-            //    throw new ArgumentOutOfRangeException(nameof(data));
+        //public WynikOperacji ZlozZamowienie(Produkt produkt, int ilosc, DateTimeOffset? data)
+        //{
+        //    //podobnie jak wyżej
 
-            //var sukces = false;
-            //var tekstZamowienia = "Zamowienie z dev-hobby.pl" + Environment.NewLine +
-            //    "Produkt: " + produkt.KodProduktu + Environment.NewLine +
-            //    "Ilość: " + ilosc;
+        //    return ZlozZamowienie(produkt, ilosc, data, null);
 
-            //if (data.HasValue)
-            //{
-            //    tekstZamowienia += Environment.NewLine + "Data dostawy: " + data.Value.ToString("d");
-            //}
+        //    //if (produkt == null)
+        //    //    throw new ArgumentNullException(nameof(produkt));
+        //    //if (ilosc <= 0)
+        //    //    throw new ArgumentOutOfRangeException(nameof(ilosc));
+        //    //if (data <= DateTimeOffset.Now)
+        //    //    throw new ArgumentOutOfRangeException(nameof(data));
 
-            //var emailService = new EmailService();
-            //var potwierdzenie = emailService.WyslijWiadomosc("Nowe Zamowienie", tekstZamowienia, this.Email);
+        //    //var sukces = false;
+        //    //var tekstZamowienia = "Zamowienie z dev-hobby.pl" + Environment.NewLine +
+        //    //    "Produkt: " + produkt.KodProduktu + Environment.NewLine +
+        //    //    "Ilość: " + ilosc;
 
-            //if (potwierdzenie.StartsWith("Wiadomość wysłana: "))
-            //    sukces = true;
-            //var wynikiOperacji = new WynikOperacji(sukces, tekstZamowienia);
-            //return wynikiOperacji;
-        }
+        //    //if (data.HasValue)
+        //    //{
+        //    //    tekstZamowienia += Environment.NewLine + "Data dostawy: " + data.Value.ToString("d");
+        //    //}
+
+        //    //var emailService = new EmailService();
+        //    //var potwierdzenie = emailService.WyslijWiadomosc("Nowe Zamowienie", tekstZamowienia, this.Email);
+
+        //    //if (potwierdzenie.StartsWith("Wiadomość wysłana: "))
+        //    //    sukces = true;
+        //    //var wynikiOperacji = new WynikOperacji(sukces, tekstZamowienia);
+        //    //return wynikiOperacji;
+        //}
 
         /// <summary>
         /// Metoda wysyła zamowienie do dostawcy
@@ -102,7 +109,7 @@ namespace DevHobby.BLL
         /// <param name="data">Data dostawy zamówienia</param>
         /// <param name="instrukcje">Instrukcje dostawy</param>
         /// <returns></returns>
-        public WynikOperacji ZlozZamowienie(Produkt produkt, int ilosc, DateTimeOffset? data, string instrukcje)
+        public WynikOperacji ZlozZamowienie(Produkt produkt, int ilosc, DateTimeOffset? data = null, string instrukcje = "Standardowa Dostawa")
         {
             if (produkt == null)
                 throw new ArgumentNullException(nameof(produkt));
@@ -142,19 +149,35 @@ namespace DevHobby.BLL
         /// <param name="dolaczAdres">true jeśli zawiera adres wysyłki</param>
         /// <param name="wyslijKopie">true jeśli wysyłamy kopię na adres email</param>
         /// <returns></returns>
-        public WynikOperacji ZlozZamowienie(Produkt produkt, int ilosc, bool dolaczAdres, bool wyslijKopie)
+        public WynikOperacji ZlozZamowienie(Produkt produkt, int ilosc, DolaczAdres dolaczAdres, WyslijKopie wyslijKopie)
         {
             var tekstZamowienia = "Tekst zamowienia";
 
-            if (dolaczAdres)
+            if (dolaczAdres == DolaczAdres.Tak)
                 tekstZamowienia += " Adres zamowienia";
 
-            if (wyslijKopie)
+            if (wyslijKopie == WyslijKopie.Tak)
                 tekstZamowienia += " wysyłam kopie";
 
             var wynikiOperacji = new WynikOperacji(true, tekstZamowienia);
             return wynikiOperacji;
 
+        }
+
+        public override string ToString()
+        {
+            string dostawcaInfo = "Dostawca: " + this.NazwaFirmy;
+            string wynik = dostawcaInfo.ToLower();
+            wynik = dostawcaInfo.ToUpper();
+            wynik = dostawcaInfo.Replace("Dostawca", "Odbiorca");
+
+            var długosc = dostawcaInfo.Length;
+            var index = dostawcaInfo.IndexOf(":");
+            var start = dostawcaInfo.StartsWith("Dost");
+            var stop = dostawcaInfo.EndsWith("ca");
+            var trim = dostawcaInfo.Trim();
+
+            return dostawcaInfo;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevHobby.BLL;
+using System;
 using DevHobby.Common;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -61,7 +62,7 @@ namespace DevHobby.BLL.Testy
             var dostawca = new Dostawca();
             var produkt = new Produkt(1, "Biurko", "Opis");
 
-            var oczekiwana = new WynikOperacji(true, "Zamowienie z dev-hobby.pl\r\nProdukt: Informatyka - 1\r\nIlość: 15");
+            var oczekiwana = new WynikOperacji(true, "Zamowienie z dev-hobby.pl\r\nProdukt: Informatyka - 1\r\nIlość: 15\r\nInstrukcje: Standardowa Dostawa");
 
             //ACT wykonaj test
             var actualna = dostawca.ZlozZamowienie(produkt, 15);
@@ -111,7 +112,7 @@ namespace DevHobby.BLL.Testy
             var dostawca = new Dostawca();
             var produkt = new Produkt(1, "Biurko", "Opis");
 
-            var oczekiwana = new WynikOperacji(true, "Zamowienie z dev-hobby.pl\r\nProdukt: Informatyka - 1\r\nIlość: 15\r\nData dostawy: 05.05.2020");
+            var oczekiwana = new WynikOperacji(true, "Zamowienie z dev-hobby.pl\r\nProdukt: Informatyka - 1\r\nIlość: 15\r\nData dostawy: 05.05.2020\r\nInstrukcje: Standardowa Dostawa");
 
             //ACT wykonaj test
             var actualna = dostawca.ZlozZamowienie(produkt, 15, new DateTimeOffset(2020,5,5,0,0,0, new TimeSpan(8,0,0)));
@@ -138,6 +139,23 @@ namespace DevHobby.BLL.Testy
             Assert.AreEqual(oczekiwana.Sukces, actualna.Sukces);
             Assert.AreEqual(oczekiwana.Wiadomosc, actualna.Wiadomosc);
         }
+        [TestMethod]
+        public void ZlozZamowienie_BrakDaty_Test()
+        {
+            // Arange
+            var dostawca = new Dostawca();
+            var produkt = new Produkt(1, "Biurko", "Opis");
+
+            var oczekiwana = new WynikOperacji(true, "Zamowienie z dev-hobby.pl\r\nProdukt: Informatyka - 1\r\nIlość: 15\r\nInstrukcje: Testowe Instrukcje");
+
+            //ACT wykonaj test
+            var actualna = dostawca.ZlozZamowienie(produkt, 15, instrukcje: "Testowe Instrukcje");
+
+            // Assert
+
+            Assert.AreEqual(oczekiwana.Sukces, actualna.Sukces);
+            Assert.AreEqual(oczekiwana.Wiadomosc, actualna.Wiadomosc);
+        }
 
         [TestMethod]
         public void ZlozZamowienie_DolaczAdre_test()
@@ -147,7 +165,7 @@ namespace DevHobby.BLL.Testy
             var produkt = new Produkt(1, "Biurko", "Opis");
             var oczekiwana = new WynikOperacji(true, "Tekst zamowienia Adres zamowienia");
             //ACT wykonaj test
-            var actualna = dostawca.ZlozZamowienie(produkt, 15, true, false);
+            var actualna = dostawca.ZlozZamowienie(produkt, 15, dolaczAdres: Dostawca.DolaczAdres.Tak, wyslijKopie: Dostawca.WyslijKopie.Nie);
 
             // Assert
 
@@ -155,5 +173,25 @@ namespace DevHobby.BLL.Testy
             Assert.AreEqual(oczekiwana.Wiadomosc, actualna.Wiadomosc);
 
         }
+
+        [TestMethod]
+        public void ToString_Test()
+        {
+            // Arange
+            var dostawca = new Dostawca();
+            dostawca.DostawcaId = 2;
+            dostawca.NazwaFirmy = "Dev-Hobby";
+
+            var oczekiwana =  "Dostawca: Dev-Hobby";
+            //ACT wykonaj test
+            var actualna = dostawca.ToString();
+
+            // Assert
+
+            Assert.AreEqual(oczekiwana, actualna);
+            //Assert.AreEqual(oczekiwana.Wiadomosc, actualna.Wiadomosc);
+
+        }
+
     }
 }
