@@ -166,16 +166,18 @@ namespace DevHobby.BLL
 
         public override string ToString()
         {
+            //string dostawcaInfo = null;
             string dostawcaInfo = "Dostawca: " + this.NazwaFirmy;
-            string wynik = dostawcaInfo.ToLower();
-            wynik = dostawcaInfo.ToUpper();
-            wynik = dostawcaInfo.Replace("Dostawca", "Odbiorca");
 
-            var długosc = dostawcaInfo.Length;
-            var index = dostawcaInfo.IndexOf(":");
-            var start = dostawcaInfo.StartsWith("Dost");
-            var stop = dostawcaInfo.EndsWith("ca");
-            var trim = dostawcaInfo.Trim();
+            string wynik = dostawcaInfo?.ToLower();
+            wynik = dostawcaInfo?.ToUpper();
+            wynik = dostawcaInfo?.Replace("Dostawca", "Odbiorca");
+
+            var długosc = dostawcaInfo?.Length;
+            var index = dostawcaInfo?.IndexOf(":");
+            var start = dostawcaInfo?.StartsWith("Dost");
+            var stop = dostawcaInfo?.EndsWith("ca");
+            var trim = dostawcaInfo?.Trim();
 
             return dostawcaInfo;
         }
